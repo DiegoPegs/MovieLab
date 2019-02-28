@@ -33,5 +33,6 @@ class MovieTableViewCell: UITableViewCell {
         lbTitle.text = movie.title
         lbSumary.text = movie.sumary
         lbRating.text = "⭐️ \(movie.rating)/10"
+        ivPoster.image = movie.image as? UIImage
     }
 }

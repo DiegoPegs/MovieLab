@@ -136,7 +136,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jpX-mL-2G9">
-                                <rect key="frame" x="16" y="279" width="343" height="139"/>
+                                <rect key="frame" x="16" y="279" width="343" height="121"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -150,11 +150,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHY-SU-TJD">
-                                <rect key="frame" x="153" y="452" width="68" height="30"/>
+                                <rect key="frame" x="169" y="573" width="68" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cadastrar"/>
                                 <connections>
                                     <action selector="addEditMovie:" destination="8XR-eM-Xuk" eventType="touchUpInside" id="w6c-re-AEB"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8pE-pM-M9I">
+                                <rect key="frame" x="16" y="458" width="343" height="107"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gtw-ho-3G7">
+                                <rect key="frame" x="127" y="420" width="120" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Selecionar Pôster"/>
+                                <connections>
+                                    <action selector="selectPoster:" destination="8XR-eM-Xuk" eventType="touchUpInside" id="CJx-am-TRy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -163,6 +175,7 @@
                     </view>
                     <connections>
                         <outlet property="btAddEdit" destination="OHY-SU-TJD" id="5DN-UV-WpY"/>
+                        <outlet property="ivPoster" destination="8pE-pM-M9I" id="b4i-DY-2h4"/>
                         <outlet property="tfCategories" destination="Jto-Bf-fnC" id="56C-A0-yUp"/>
                         <outlet property="tfDuration" destination="7d6-uM-4av" id="oVa-wJ-wmT"/>
                         <outlet property="tfRating" destination="DAl-ES-fL7" id="YRu-O9-tI8"/>
@@ -199,6 +212,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dI2-RZ-8xC">
                                 <rect key="frame" x="161" y="152.5" width="53" height="53"/>
                                 <state key="normal" backgroundImage="play"/>
+                                <connections>
+                                    <action selector="playMovieTrailler:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ORn-ff-77r"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toy Story 3" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ahd-EC-Gaf">
                                 <rect key="frame" x="16" y="308" width="343" height="33.5"/>
@@ -305,6 +321,14 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Filmes" id="WkR-6v-xwb"/>
+                    <navigationItem key="navigationItem" id="dij-tT-VQE">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="E8z-tE-JHy">
+                            <connections>
+                                <segue destination="8XR-eM-Xuk" kind="show" id="oTj-3x-UsL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="ivPoster" destination="8yW-1c-UCe" id="DrW-W0-BZQ"/>
                         <outlet property="lbCategory" destination="O8z-A1-edN" id="d5B-iS-Lht"/>
@@ -347,11 +371,50 @@
                     <connections>
                         <segue destination="cJb-IF-uRi" kind="relationship" relationship="viewControllers" id="mFo-ln-nn1"/>
                         <segue destination="3d7-wF-f1n" kind="relationship" relationship="viewControllers" id="1k5-jx-76G"/>
+                        <segue destination="94G-SU-PYl" kind="relationship" relationship="viewControllers" id="73k-r2-gth"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5sA-Dj-bta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="493" y="-557"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Kdq-4d-sG0">
+            <objects>
+                <viewController id="94G-SU-PYl" customClass="MapViewController" customModule="MoviesLib" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mQa-Rx-NLX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zfd-YJ-YRz">
+                                <rect key="frame" x="0.0" y="76" width="375" height="542"/>
+                            </mapView>
+                            <searchBar contentMode="redraw" placeholder="Entre com o ponto de interesse" translatesAutoresizingMaskIntoConstraints="NO" id="UoZ-Pe-lut">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UoZ-Pe-lut" firstAttribute="trailing" secondItem="GpR-7w-1EP" secondAttribute="trailing" id="9L8-3U-shG"/>
+                            <constraint firstItem="zfd-YJ-YRz" firstAttribute="top" secondItem="UoZ-Pe-lut" secondAttribute="bottom" id="McH-e0-XiY"/>
+                            <constraint firstItem="UoZ-Pe-lut" firstAttribute="top" secondItem="GpR-7w-1EP" secondAttribute="top" id="SIc-sT-bec"/>
+                            <constraint firstItem="zfd-YJ-YRz" firstAttribute="leading" secondItem="UoZ-Pe-lut" secondAttribute="leading" id="ZoX-Q3-lFh"/>
+                            <constraint firstItem="zfd-YJ-YRz" firstAttribute="trailing" secondItem="UoZ-Pe-lut" secondAttribute="trailing" id="kA6-L7-9Y9"/>
+                            <constraint firstItem="zfd-YJ-YRz" firstAttribute="bottom" secondItem="GpR-7w-1EP" secondAttribute="bottom" id="oaf-Sm-uvm"/>
+                            <constraint firstItem="UoZ-Pe-lut" firstAttribute="leading" secondItem="GpR-7w-1EP" secondAttribute="leading" id="w7a-lr-rxj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GpR-7w-1EP"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" selectedImage="theaters" id="ehh-Sh-s8r"/>
+                    <connections>
+                        <outlet property="mapView" destination="zfd-YJ-YRz" id="hZl-pC-MHR"/>
+                        <outlet property="searchBar" destination="UoZ-Pe-lut" id="lzR-09-XB9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yPH-oh-NMk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1869.5999999999999" y="-568.06596701649175"/>
         </scene>
         <!--Filmes-->
         <scene sceneID="V73-S9-Frc">
@@ -362,7 +425,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dRs-7h-JWi">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" cocoaTouchSystemColor="darkTextColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -379,6 +441,10 @@
         <image name="movies" width="22" height="22"/>
         <image name="play" width="53" height="53"/>
         <image name="settings" width="22" height="22"/>
+        <image name="theaters" width="22" height="22"/>
         <image name="toystory3" width="400" height="330"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="oTj-3x-UsL"/>
+    </inferredMetricsTieBreakers>
 </document>
